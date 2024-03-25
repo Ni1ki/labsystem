@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>LAS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1532187643603-ba119ca4109e?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2Nob29sJTIwbGFifGVufDB8fDB8fHww'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .navbar {
+            background: transparent;
+            transition: background 0.5s ease-in-out;
+        }
+
+        .navbar-brand {
+            color: #fff;
+        }
+
+        .container-content {
+            margin-top: 150px; /* Adjust as needed based on your design */
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa; /* Change to your desired background color */
+            text-align: center;
+        }
+
+        
+        h2 {
+            font-weight: bold;
+            text-align: center;
+            color: white;
+        }
+
+        .btn-primary {
+            font-weight: bold;
+        }
+        
+        .form-label{
+        	font-weight: bold;
+        	text-align: right;
+        }
+        
+        .form{
+        	text-align: center;
+        }
+        
+        .heading{
+        	color: black;	
+        }
+        
+        table{
+        	text-align: center;
+        	background-color: white;
+        }
+        
+        .table-container {
+            margin: 0 auto;
+            width: 80%; 
+            margin-top: 40px;
+        }
+
+        .btn-add-new {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="overlay"></div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Lab Appointment System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/admindashboard">Dashboard<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a> <!-- Link to your login page -->
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <h2 >Medical Test Results</h2>
+    
+    
+    
+    <tr>
+    	<div class="col-sm-7 table-container" align = "center">
+           <div class="panel-body" align = "center">
+             <table class="table">
+  			    <thead class="thead-dark">
+ 					<tr>
+			            <th>ID</th>
+			            <th>Test ID</th>
+			            <th>Test Name</th>
+			            <th>Patient ID</th>
+			            <th>Date</th>
+			            <th>Time</th>
+			            <th>Status</th>
+			            <th>Result</th>
+			            <th>Pdf</th>
+			            <th>Edit</th>
+			            <!-- <th>Delete</th> -->
+       				</tr>
+  				</thead>
+  				<tbody>
+			      	<tr  th:each="appointment : ${listappointment }">
+				        <td th:text="${appointment.id}">ID</td>
+				        <td th:text="${appointment.testid}">Test ID</td>
+				        <td th:text="${appointment.testname}">Test Name</td>
+				        <td th:text="${appointment.patientid}">Patient ID</td>
+				        <td th:text="${appointment.date}">Date</td>
+				        <td th:text="${appointment.time}">Time</td>  
+				        <td th:text="${appointment.status}">Status</td>
+				        <td th:text="${appointment.result}">Result</td>
+				       <!--  <td th:text="${appointment.pdf}">PDF</td>  -->   
+				       <td>
+				            <a th:href="@{'/downloadPdf/' + ${appointment.id}}">PDF</a>
+				        </td>                
+				        <td>
+				            <a th:href="@{'/admindashboard/testresult/edit/' + ${appointment.id}}">Edit</a>
+				        </td>                                
+				        <!-- <td>
+				            <a th:href="@{'/admindashboard/appointment/delete/' + ${appointment.id}}">Delete</a>
+				        </td>  -->           
+			        </tr> 
+   
+  			</tbody>
+           </table>
+        </div>
+      </div> 
+    </tr>
+</body>
+<footer class="footer mt-auto py-3 bg-light fixed-bottom">
+    <div class="container text-center">
+        <span class="text-muted">Lab Appointment System &copy; 2024</span>
+    </div>
+</footer>
+</html>

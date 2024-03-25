@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>LAS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha384-xz4hzdbzBtznVCfLTGOvKSATQcdl2AT/4OFfE4PRPWwkg5Nf6UezLuoq3IHJ9m4V" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-3hojvgrFZh8c9LJKK4xnbhV8MBjKlTToTQsN8eKLIn9PAh3ai1djXxo11uZo2Q8S" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-image: url(
+                'https://st3.depositphotos.com/1005233/19381/i/600/depositphotos_193819864-stock-photo-view-businessman-using-smartphone-shinny.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0; 
+            padding: 0; 
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .navbar {
+            background: transparent;
+            transition: background 0.5s ease-in-out;
+        }
+
+        .navbar-brand {
+            color: #fff;
+        }
+
+        .container-content {
+            margin-top: 150px;
+        }
+
+        .hero-section {
+            padding: 100px 0;
+            color: #fff;
+        }
+
+        .hero-section h1 {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero-section a.btn-primary {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Lab Appointment System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registration">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero-section text-center">
+        <h1>Welcome to the Lab Appointment system...!!</h1>
+        <p>Book your lab appointments with ease and convenience.</p>
+        <a href="/registration" class="btn btn-primary btn-lg"><i class="fas fa-user-plus"></i>Register here</a>
+    </div>
+
+    <div align="center" id="registration" class="container-content">
+        <div class="col-sm-5" align="center">
+            <div class="panel-body" align="center">
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">Lab Appointment System &copy; 2024</span>
+        </div>
+    </footer>
+
+</body>
+
+</html>

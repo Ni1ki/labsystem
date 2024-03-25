@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>LAS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+       body {
+            background-color: #778899;
+            background-image: url('https://images.unsplash.com/photo-1532187643603-ba119ca4109e?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2Nob29sJTIwbGFifGVufDB8fDB8fHww');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .navbar {
+            background: transparent;
+            transition: background 0.5s ease-in-out;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .container-content {
+            margin-top: 50px;
+            margin-bottom: 100px; /* Adjust as needed based on your design */
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        h1 {
+            color: black;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width:35%;
+        }
+
+        .form-label {
+            font-weight: bold;
+            text-align: right;
+            color: #333;
+        }
+
+        .form {
+            text-align: left;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            font-weight: bold;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border: 1px solid #0056b3;
+        }
+
+        label {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+<div class="overlay"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Lab Appointment System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/admindashboard">Dashboard<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a> <!-- Link to your login page -->
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="container-content">
+        <div class="container form-container">
+     
+     <form class='form'action="#" th:action="@{/saveadminappointment}" th:object="${appointment}" method="post"> 
+     <h1 class="heading"><b>Update Appointment</b></h1>   
+       <div align="left">
+                <label class="form-label">Test Id :</label>
+                <input type="hidden" th:field="*{id}" />
+                <input type="text" th:field="*{testid}" th:readonly="${true}"  class="form-control" placeholder="Enter TestID"/>
+         </div> 
+         <div align="left">
+                <label class="form-label" >Test Name :</label>
+                <input type="text" th:field="*{testname}" th:readonly="${true}"  class="form-control" placeholder="Enter Test Name" />
+         </div>
+         <div align="left">
+                <label class="form-label" >Patient Id :</label>
+                <input type="text" th:field="*{patientid}" th:readonly="${true}"  class="form-control" placeholder="Enter PatientID" />
+         </div>
+         <div align="left">
+                <label class="form-label" >Date :</label>
+                <input type="date" th:field="*{date}"  class="form-control" placeholder="Enter Date" required/>
+         </div>
+        <!--  <div align="left">
+                <label class="form-label" >Time :</label>
+                <input type="text" th:field="*{time}"  class="form-control" placeholder="Address" />
+         </div> -->
+         <div align="left">
+    		<label class="form-label">Time :</label>
+    		<select th:field="*{time}" class="form-control" name="time" required>
+    			<option value="#" disabled>Select an option</option>
+        		<option value="8-10 am">8-10 am</option>
+        		<option value="10-12 am">10-12 am</option>
+        		<option value="1-2 pm">1-2 pm</option>
+        		<option value="2-4 pm">2-4 pm</option>
+    		</select>
+    	</div>
+    	<div align="left">
+    		<label class="form-label">Status :</label>
+    		<select th:field="*{status}" class="form-control" name="status" required>
+    			<option value="#" disabled>Select an option</option>
+        		<option value="pending">Pending</option>
+        		<option value="approved">Approved</option>
+    		</select>
+    	</div>
+           <br>
+            <button type="submit" class="btn btn-primary">Submit</button> 	          
+    </form>
+    
+	</div>
+</div>
+<footer class="footer mt-auto py-3 bg-light fixed-bottom">
+    <div class="container text-center">
+        <span class="text-muted">Lab Appointment System &copy; 2024</span>
+    </div>
+</footer>
+
+</body>
+</html>

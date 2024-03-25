@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>LAS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #778899;
+            background-image: url('https://media.istockphoto.com/id/1418835107/photo/close-up-of-examining-of-test-sample.webp?b=1&s=170667a&w=0&k=20&c=jpFGWGi4WhaPmXFCMKJnLr2z9Dw7i7YbrXUzYzZAiyc=');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background: transparent;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .container-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; /* 100% of the viewport height */
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        h1 {
+            color: black;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 25%;
+        }
+
+        .form-label {
+            font-weight: bold;
+            text-align: right;
+            color: #333;
+        }
+
+        .form {
+            text-align: left;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            font-weight: bold;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border: 1px solid #0056b3;
+        }
+
+        label {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Lab Appointment System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/registration">Register</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Login<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-content">
+    <div class="container form-container">
+        <form class='form' th:action="@{/login}" method="post">
+            <h1 class="heading"><b>LOGIN</b></h1>
+            <div align="left">
+                <label class="form-label">Email :</label>
+                <input type="email" id="username" name="username" class="form-control" placeholder="Enter Email" required/>
+            </div>
+            <div align="left">
+                <label class="form-label">Password :</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" required/>
+            </div>
+            <br>
+            <p th:if="${param.error != null}" class="alert alert-danger">Your username or password is invalid.</p>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+
+        </form>
+    </div>
+</div>
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+        <span class="text-muted">Lab Appointment System &copy; 2024</span>
+    </div>
+</footer>
+
+</body>
+
+</html>
